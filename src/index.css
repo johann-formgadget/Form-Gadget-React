@@ -1,0 +1,55 @@
+/* if the data-validate attribute is found for a field, then corresponding invalid-* css classes will be added to the field and it's corresponding label  */
+            .invalid-required, .invalid-email {
+                border: red 1px solid;
+            }
+            label.invalid-required, label.invalid-email {
+                border: 0;
+            }
+
+            /* by default, only the invalid-* classes are added to the field, using a pseudo element or adding custom error messages with a Javascript event listener is recommended.  */
+            label.invalid-required:after {
+                content: "*this field is required";
+                color: red;
+                font-size: 12px;
+            }
+            label.invalid-email:after {
+                content: "*the email address is not properly formatted.";
+                color: red;
+                font-size: 12px;
+            }
+            /* The button is disabled after the submit button is pressed, this is to prevent double clicking and submitting the form twice, the button is also disabled after being pressed the first time and having validation errors.  Once the user fixing the validation errors the submit button is enabled again.  */
+            button {
+                background-color: green;
+                color: white;
+                font-size: 20px;
+                height: 40px;
+            }
+
+            button:disabled {
+                background-color: grey;
+            }
+
+            /* While the request is in flight an 'ajax' class is added to the button, this can be used to show a spinner or change the background-color of the button   */
+            button.ajax {
+                position: relative;
+            }
+
+            button.ajax:after {
+                content: url('https://www.formgadget.com/static/form-gadget-webapp/dist/images/spinner.svg');
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+
+                color: yellow;
+                background-color: dimgrey;
+            }
+
+            label {
+                display: block;
+            }
+
+            form > * {
+                margin-top: 20px;
+            }
